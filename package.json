@@ -1,0 +1,17 @@
+{
+  "name": "ts-mock",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "esno ./src/index.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "esno": "*",
+    "json-schema-faker": "0.5.0-rcv.46",
+    "typescript-json-schema": "^0.54.0"
+  }
+}

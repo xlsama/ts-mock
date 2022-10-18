@@ -1,0 +1,85 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "definitions": {
+    "WebcastOpenManagementService": { "type": "object" },
+    "GetAppTrafficListRequest": {
+      "type": "object",
+      "properties": {
+        "Filter": {
+          "description": "过滤条件",
+          "$ref": "#/definitions/AppTrafficListFilter"
+        },
+        "Offset": {
+          "description": "Offset，刚开始不传或者传0，翻页使用 页码*每页数量",
+          "type": "number"
+        },
+        "Size": { "description": "每页的大小", "type": "number" }
+      }
+    },
+    "AppTrafficListFilter": {
+      "description": "套餐管理页面",
+      "type": "object",
+      "properties": {
+        "AppID": { "type": "string" },
+        "AppName": { "type": "string" }
+      }
+    },
+    "GetAppTrafficListResponse": {
+      "type": "object",
+      "properties": {
+        "Infos": {
+          "type": "array",
+          "items": { "$ref": "#/definitions/AppTrafficInfo" }
+        },
+        "TotalCount": { "type": "string" }
+      },
+      "required": ["Infos", "TotalCount"]
+    },
+    "AppTrafficInfo": {
+      "type": "object",
+      "properties": {
+        "AppID": { "description": "租户ID", "type": "string" },
+        "AppNameChinese": { "description": "中文应用名称", "type": "string" },
+        "AppNameEnglish": { "description": "英文应用名称", "type": "string" },
+        "AnchorLimit": {
+          "description": "允许配置的主播总数量",
+          "type": "string"
+        },
+        "LiveDurationLimit": {
+          "description": "允许消耗的直播总时长",
+          "type": "string"
+        },
+        "AnchorSpent": {
+          "description": "已使用的主播总数量",
+          "type": "string"
+        },
+        "LiveDurationSpent": {
+          "description": "已消耗的直播总时长",
+          "type": "string"
+        },
+        "Operator": { "description": "操作人", "type": "string" },
+        "CampaignType": {
+          "$ref": "#/definitions/AppCampaignType",
+          "description": "收费规则"
+        },
+        "RateValue": {
+          "description": "折扣数（收费规则为折扣时，这里的值才有用）",
+          "type": "number"
+        }
+      },
+      "required": [
+        "AnchorLimit",
+        "AnchorSpent",
+        "AppID",
+        "AppNameChinese",
+        "AppNameEnglish",
+        "CampaignType",
+        "LiveDurationLimit",
+        "LiveDurationSpent",
+        "Operator",
+        "RateValue"
+      ]
+    },
+    "AppCampaignType": { "enum": [1, 2, 3], "type": "number" }
+  }
+}
