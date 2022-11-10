@@ -13,5 +13,8 @@
     "esno": "*",
     "json-schema-faker": "0.5.0-rcv.46",
     "typescript-json-schema": "^0.54.0"
+  },
+  "devDependencies": {
+    "@types/node": "^18.11.9"
   }
 }

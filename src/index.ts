@@ -1,5 +1,5 @@
 import path from 'path'
-import fs from 'fs'
+import fs, { readFileSync } from 'fs'
 import * as TJS from 'typescript-json-schema'
 import { JSONSchemaFaker, Schema } from 'json-schema-faker'
 
@@ -35,6 +35,7 @@ const genMockData = (schema: TJS.Definition) =>
   JSONSchemaFaker.generate(schema as Schema)
 
 const schema = genSchemaFromTs('interface/WebcastOpenManagementService.ts')
+
 // if (schema) {
 //   const data = genMockData(schema)
 //   console.log(data)
